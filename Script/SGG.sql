@@ -93,6 +93,13 @@ foreign key (id_pessoa) references Pessoa (id_pessoa)
 
 create table Juridica (
 id_pj int not null auto_increment,
+cnpj char(11) not null,
+id_pessoa int,
+primary key (id_pj),
+index fk_Pessoa (id_pessoa), 
+foreign key (id_pessoa) references Pessoa (id_pessoa)
+);
+id_pj int not null auto_increment,
 cnpj char(14) not null,
 id_pessoa int,
 primary key (id_pj),
@@ -108,4 +115,54 @@ localizacao varchar(25),
 primary key (id_galpao)
 );
 
+create table Venda (
+id_venda int not null auto_increment,
+quantidade int,
+valor_unit int,
+dt_venda date,
+primary key (id_venda)
+);
+
+create table Producao (
+id_producao int not null auto_increment,
+ltda int,
+validade date,
+id_animal int,
+index fk_animal (id_producao),
+foreign key (id_producao) references Animal (id_animal) 
+);
+
+create table Reproducao (
+id_reproducao int not null auto_increment,
+dt_separo date,
+id_animal int,
+index fk_Animal (id_reproducao),
+foreign key (id_reproducao) references Animal (id_animal) 
+);
+
+create table Compra (
+id_compra int not null auto_increment,
+dt_compra date,
+qtde_compra int,
+valor_unit double,
+total double,
+id_medicamento int,
+index fk_Medicamento (id_medicamento),
+foreign key (id_medicamento) references Compra (id_compra),
+id_alimento int,
+index fk_Alimento (id_alimento),
+foreign key (id_alimento) references Compra (id_compra)
+);
+
+create table Tratamento (
+id_tratamento int not null auto_increment,
+posologia double,
+dt_aplicacao date,
+id_medicamento int,
+index fk_Medicamento (id_medicamento),
+foreign key (id_medicamento) references Tratamento (id_tratamento),
+id_animal int,
+index fk_Animal (id_animal),
+foreign key (id_animal) references Tratamento (id_tratamento)
+);
 
