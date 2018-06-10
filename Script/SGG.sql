@@ -125,7 +125,8 @@ CREATE TABLE Producao (
 	validade DATE,
 	id_animal INT,
 	index fk_animal (id_producao),
-	FOREIGN KEY (id_producao) REFERENCES Animal (id_animal) 
+	FOREIGN KEY (id_producao) REFERENCES Animal (id_animal),
+	PRIMARY KEY (id_producao)
 );
 
 CREATE TABLE Reproducao (
@@ -133,7 +134,8 @@ CREATE TABLE Reproducao (
 	dt_separo DATE,
 	id_animal INT,
 	index fk_Animal (id_reproducao),
-	FOREIGN KEY (id_reproducao) REFERENCES Animal (id_animal) 
+	FOREIGN KEY (id_reproducao) REFERENCES Animal (id_animal),
+	PRIMARY KEY (id_reproducao);
 );
 
 CREATE TABLE Compra (
@@ -147,7 +149,8 @@ CREATE TABLE Compra (
 	FOREIGN KEY (id_medicamento) REFERENCES Compra (id_compra),
 	id_alimento INT,
 	index fk_Alimento (id_alimento),
-	FOREIGN KEY (id_alimento) REFERENCES Compra (id_compra)
+	FOREIGN KEY (id_alimento) REFERENCES Compra (id_compra),
+	PRIMARY KEY (id_compra)
 );
 
 CREATE TABLE Tratamento (
@@ -159,6 +162,7 @@ CREATE TABLE Tratamento (
 	FOREIGN KEY (id_medicamento) REFERENCES Tratamento (id_tratamento),
 	id_animal INT,
 	index fk_Animal (id_animal),
-	FOREIGN KEY (id_animal) REFERENCES Tratamento (id_tratamento)
+	FOREIGN KEY (id_animal) REFERENCES Tratamento (id_tratamento),
+	PRIMARY KEY (id_tratamento)
 );
 
