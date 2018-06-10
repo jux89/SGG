@@ -1,168 +1,164 @@
-use sgg; 
 
-create table Raca (
-id_raca int not null auto_increment,
-descricao varchar(20) not null, 
-nome varchar(20),
-primary key (id_raca)
+CREATE DATABASE sgg;
+
+USE sgg; 
+
+CREATE TABLE Raca (
+	id_raca INT NOT NULL auto_increment,
+	descricao VARCHAR(20) NOT NULL, 
+	nome VARCHAR(20),
+	PRIMARY KEY (id_raca)
 );
 
-create table Animal ( 
-id_animal int not null auto_increment, 
-peso float not null, 
-sexo char(1) not null, 
-dt_nasc int not null,
-id_cabanha int,
-id_galpao int,
-id_raca int,
-primary key (id_animal),
-index fk_Cabanha (id_cabanha),
-foreign key (id_cabanha) references Cabanha (id_cabanha),
-index fk_Galpao (id_galpao),
-foreign key (id_galpao) references Galpao (id_galpao),
-index fk_Raca (id_raca),
-foreign key (id_raca) references Raca (id_raca)
+CREATE TABLE Animal ( 
+	id_animal INT NOT NULL auto_increment, 
+	peso float NOT NULL, 
+	sexo char(1) NOT NULL, 
+	dt_nasc INT NOT NULL,
+	id_cabanha INT,
+	id_galpao INT,
+	id_raca INT,
+	PRIMARY KEY (id_animal),
+	index fk_Cabanha (id_cabanha),
+	FOREIGN KEY (id_cabanha) REFERENCES Cabanha (id_cabanha),
+	index fk_Galpao (id_galpao),
+	FOREIGN KEY (id_galpao) REFERENCES Galpao (id_galpao),
+	index fk_Raca (id_raca),
+	FOREIGN KEY (id_raca) REFERENCES Raca (id_raca)
 );
 
-create table Cabanha (
-id_cabanha int not null auto_increment,
-id_pessoa int,
-endereco varchar(20) not null,
-primary key (id_cabanha),
-index fk_Pessoa (id_pessoa),
-foreign key (id_pessoa) references Pessoa (id_pessoa)
+CREATE TABLE Cabanha (
+	id_cabanha INT NOT NULL auto_increment,
+	id_pessoa INT,
+	endereco VARCHAR(20) NOT NULL,
+	PRIMARY KEY (id_cabanha),
+	index fk_Pessoa (id_pessoa),
+	FOREIGN KEY (id_pessoa) REFERENCES Pessoa (id_pessoa)
 );
 
-create table Medicamento ( 
-id_medicamento int not null auto_increment,
-nome varchar(50) not null, 
-dt_validade int not null,
-quantidade int,
-primary key (id_medicamento)
+CREATE TABLE Medicamento ( 
+	id_medicamento INT NOT NULL auto_increment,
+	nome VARCHAR(50) NOT NULL, 
+	dt_validade INT NOT NULL,
+	quantidade INT,
+	PRIMARY KEY (id_medicamento)
 );
 
-create table Nutricao ( 
-id_nutricao int not null,
-horario float,
-data_nutricao date not null,
-quantidade int not null,
-index fk_Animal (id_nutricao),
-foreign key (id_nutricao) references Animal (id_animal) 
+CREATE TABLE Nutricao ( 
+	id_nutricao INT NOT NULL,
+	horario float,
+	data_nutricao DATE NOT NULL,
+	quantidade INT NOT NULL,
+	index fk_Animal (id_nutricao),
+	FOREIGN KEY (id_nutricao) REFERENCES Animal (id_animal) 
 );
 
-create table Alimento ( 
-id_alimento int not null auto_increment,
-descricao varchar(100),
-nome varchar(20) not null,
-id_fornecedor int,
-primary key (id_alimento),
-index fk_Alimento (id_fornecedor), 
-foreign key (id_alimento) references Fornecedor (id_fornecedor)
+CREATE TABLE Alimento ( 
+	id_alimento INT NOT NULL auto_increment,
+	descricao VARCHAR(100),
+	nome VARCHAR(20) NOT NULL,
+	id_fornecedor INT,
+	PRIMARY KEY (id_alimento),
+	index fk_Alimento (id_fornecedor), 
+	FOREIGN KEY (id_alimento) REFERENCES Fornecedor (id_fornecedor)
 );
 
-create table Fornecedor (
-id_fornecedor int not null auto_increment,
-id_pessoa int,
-id_alimento int,
-id_medicamento int,
-primary key (id_fornecedor),
-index fk_Alimento (id_alimento), 
-foreign key (id_alimento) references Alimento (id_alimento),
-index fk_Pessoa (id_pessoa), 
-foreign key (id_pessoa) references Pessoa (id_pessoa),
-index fk_Medicamento (id_medicamento),
-foreign key (id_medicamento) references Raca (id_medicamento)
+CREATE TABLE Fornecedor (
+	id_fornecedor INT NOT NULL auto_increment,
+	id_pessoa INT,
+	id_alimento INT,
+	id_medicamento INT,
+	PRIMARY KEY (id_fornecedor),
+	index fk_Alimento (id_alimento), 
+	FOREIGN KEY (id_alimento) REFERENCES Alimento (id_alimento),
+	index fk_Pessoa (id_pessoa), 
+	FOREIGN KEY (id_pessoa) REFERENCES Pessoa (id_pessoa),
+	index fk_Medicamento (id_medicamento),
+	FOREIGN KEY (id_medicamento) REFERENCES Raca (id_medicamento)
 );
 
-create table Pessoa (
-id_pessoa int not null auto_increment,
-endereco char(80) not null,
-telefone int not null,
-email varchar(20),
-primary key (id_pessoa)
+CREATE TABLE Pessoa (
+	id_pessoa INT NOT NULL auto_increment,
+	endereco char(80) NOT NULL,
+	telefone INT NOT NULL,
+	email VARCHAR(20),
+	PRIMARY KEY (id_pessoa)
 );
 
-create table Fisica (
-id_pf int not null auto_increment,
-cpf char(9) not null,
-id_pessoa int,
-primary key (id_pf),
-index fk_Pessoa (id_pessoa), 
-foreign key (id_pessoa) references Pessoa (id_pessoa)
+CREATE TABLE Fisica (
+	id_pf INT NOT NULL auto_increment,
+	cpf char(9) NOT NULL,
+	id_pessoa INT,
+	PRIMARY KEY (id_pf),
+	index fk_Pessoa (id_pessoa), 
+	FOREIGN KEY (id_pessoa) REFERENCES Pessoa (id_pessoa)
 );
 
-create table Juridica (
-id_pj int not null auto_increment,
-cnpj char(11) not null,
-id_pessoa int,
-primary key (id_pj),
-index fk_Pessoa (id_pessoa), 
-foreign key (id_pessoa) references Pessoa (id_pessoa)
-);
-id_pj int not null auto_increment,
-cnpj char(14) not null,
-id_pessoa int,
-primary key (id_pj),
-index fk_Pessoa (id_pessoa), 
-foreign key (id_pessoa) references Pessoa (id_pessoa)
+CREATE TABLE Juridica (
+	id_pj INT NOT NULL auto_increment,
+	cnpj char(11) NOT NULL,
+	id_pessoa INT,
+	PRIMARY KEY (id_pj),
+	index fk_Pessoa (id_pessoa), 
+	FOREIGN KEY (id_pessoa) REFERENCES Pessoa (id_pessoa)
 );
 
-create table Galpao (
-id_galpao int not null auto_increment,
-nome_galpao varchar(50) not null,
-caracteristica varchar(50),
-localizacao varchar(25),
-primary key (id_galpao)
+CREATE TABLE Galpao (
+	id_galpao INT NOT NULL auto_increment,
+	nome_galpao VARCHAR(50) NOT NULL,
+	caracteristica VARCHAR(50),
+	localizacao VARCHAR(25),
+	PRIMARY KEY (id_galpao)
 );
 
-create table Venda (
-id_venda int not null auto_increment,
-quantidade int,
-valor_unit int,
-dt_venda date,
-primary key (id_venda)
+CREATE TABLE Venda (
+	id_venda INT NOT NULL auto_increment,
+	quantidade INT,
+	valor_unit INT,
+	dt_venda DATE,
+	PRIMARY KEY (id_venda)
 );
 
-create table Producao (
-id_producao int not null auto_increment,
-ltda int,
-validade date,
-id_animal int,
-index fk_animal (id_producao),
-foreign key (id_producao) references Animal (id_animal) 
+CREATE TABLE Producao (
+	id_producao INT NOT NULL auto_increment,
+	ltda INT,
+	validade DATE,
+	id_animal INT,
+	index fk_animal (id_producao),
+	FOREIGN KEY (id_producao) REFERENCES Animal (id_animal) 
 );
 
-create table Reproducao (
-id_reproducao int not null auto_increment,
-dt_separo date,
-id_animal int,
-index fk_Animal (id_reproducao),
-foreign key (id_reproducao) references Animal (id_animal) 
+CREATE TABLE Reproducao (
+	id_reproducao INT NOT NULL auto_increment,
+	dt_separo DATE,
+	id_animal INT,
+	index fk_Animal (id_reproducao),
+	FOREIGN KEY (id_reproducao) REFERENCES Animal (id_animal) 
 );
 
-create table Compra (
-id_compra int not null auto_increment,
-dt_compra date,
-qtde_compra int,
-valor_unit double,
-total double,
-id_medicamento int,
-index fk_Medicamento (id_medicamento),
-foreign key (id_medicamento) references Compra (id_compra),
-id_alimento int,
-index fk_Alimento (id_alimento),
-foreign key (id_alimento) references Compra (id_compra)
+CREATE TABLE Compra (
+	id_compra INT NOT NULL auto_increment,
+	dt_compra DATE,
+	qtde_compra INT,
+	valor_unit double,
+	total double,
+	id_medicamento INT,
+	index fk_Medicamento (id_medicamento),
+	FOREIGN KEY (id_medicamento) REFERENCES Compra (id_compra),
+	id_alimento INT,
+	index fk_Alimento (id_alimento),
+	FOREIGN KEY (id_alimento) REFERENCES Compra (id_compra)
 );
 
-create table Tratamento (
-id_tratamento int not null auto_increment,
-posologia double,
-dt_aplicacao date,
-id_medicamento int,
-index fk_Medicamento (id_medicamento),
-foreign key (id_medicamento) references Tratamento (id_tratamento),
-id_animal int,
-index fk_Animal (id_animal),
-foreign key (id_animal) references Tratamento (id_tratamento)
+CREATE TABLE Tratamento (
+	id_tratamento INT NOT NULL auto_increment,
+	posologia double,
+	dt_aplicacao DATE,
+	id_medicamento INT,
+	index fk_Medicamento (id_medicamento),
+	FOREIGN KEY (id_medicamento) REFERENCES Tratamento (id_tratamento),
+	id_animal INT,
+	index fk_Animal (id_animal),
+	FOREIGN KEY (id_animal) REFERENCES Tratamento (id_tratamento)
 );
 
