@@ -135,7 +135,7 @@ CREATE TABLE Reproducao (
 	id_animal INT,
 	index fk_Animal (id_reproducao),
 	FOREIGN KEY (id_reproducao) REFERENCES Animal (id_animal),
-	PRIMARY KEY (id_reproducao);
+	PRIMARY KEY (id_reproducao)
 );
 
 CREATE TABLE Compra (
