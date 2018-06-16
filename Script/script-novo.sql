@@ -185,6 +185,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE produto (
   id_produto INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,+ 
   tipo ENUM('Medicamento', 'Alimento', 'Leite') NULL,
   quantidade FLOAT NULL,
   id_animal INT NULL,
@@ -224,8 +225,17 @@ CREATE TABLE compra (
   id_compra INT NOT NULL AUTO_INCREMENT,
   valor FLOAT NOT NULL,
   dt_compra DATE NOT NULL,
-  PRIMARY KEY (id_compra))
+  id_cabanha INT NULL,
+  PRIMARY KEY (id_compra),
+  INDEX fk_cabanha_venda_idx (id_cabanha ASC),
+  CONSTRAINT fk_cabanha_venda
+    FOREIGN KEY (id_cabanha)
+    REFERENCES cabanha (id_cabanha)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
   
 CREATE TABLE lista_compra (
   id_lista_compra INT NOT NULL AUTO_INCREMENT,
