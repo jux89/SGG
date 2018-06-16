@@ -185,7 +185,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE produto (
   id_produto INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,+ 
+  nome VARCHAR(50) NOT NULL,
   tipo ENUM('Medicamento', 'Alimento', 'Leite') NULL,
   quantidade FLOAT NULL,
   id_animal INT NULL,
