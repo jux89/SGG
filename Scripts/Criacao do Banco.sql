@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE pessoa_juridica (
   id_juridica INT NOT NULL AUTO_INCREMENT,
-  cnpj VARCHAR(15) NOT NULL,
+  cnpj VARCHAR(14) NOT NULL,
   id_pessoa INT NULL,
   PRIMARY KEY (id_juridica),
   INDEX fk_pj_idx (id_pessoa ASC),
