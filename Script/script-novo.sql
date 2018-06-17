@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE pessoa_juridica (
   id_juridica INT NOT NULL AUTO_INCREMENT,
-  cnpj VARCHAR(45) NOT NULL,
+  cnpj VARCHAR(15) NOT NULL,
   id_pessoa INT NULL,
   PRIMARY KEY (id_juridica),
   INDEX fk_pj_idx (id_pessoa ASC),
@@ -121,6 +121,10 @@ CREATE TABLE reproducao (
   id_reproducao INT NOT NULL AUTO_INCREMENT,
   id_animal INT NOT NULL,
   dt_separo DATE NULL,
+  dt_diag_prenhez DATE NULL,
+  parto DATE NULL,
+  aborto DATE NULL,
+  observacoes VARCHAR(200) NULL,
   PRIMARY KEY (id_reproducao),
   INDEX fk_animal_idx (id_animal ASC),
   CONSTRAINT fk_animal_reproducao
@@ -157,7 +161,7 @@ CREATE TABLE alimento (
   id_alimento INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
   descricao VARCHAR(100) NULL,
-  quantiade FLOAT NOT NULL,
+  quantidade INT NOT NULL,
   id_fornecedor INT NOT NULL,
   PRIMARY KEY (id_alimento),
   INDEX fk_alimento_idx (id_fornecedor ASC),
