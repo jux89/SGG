@@ -1,0 +1,8 @@
+/*Consulta número 4: Listar a raça e a cabanha dos animais que estão em reprodução.*/
+
+SELECT * FROM ANIMAL A
+
+INNER JOIN RACA R ON A.ID_ANIMAL = R.ID_ANIMAL
+INNER JOIN CABANHA C ON C.ID_CANBANHA = A.ID_CABANHA
+INNER JOIN REPRODUCAO RE ON  R.ID_REPRODUCAO = A.ID_REPRODUCAO
+
