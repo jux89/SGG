@@ -1,4 +1,6 @@
-/* Consulta número 1: Listar animais que possuem " endereço " incompleto */
+/* Consulta número 1: Listar ID dos animais, onde a alocação (galpão) não possui localização */
 
-SELECT * FROM animal A INNER JOIN galpao G ON G.id_animal = A.id_animal INNER JOIN cabanha C ON C.id_cabanha = G.id_cabanha WHERE C.endereco IS NULL OR G.localizacao IS NULL;
-
+SELECT an.id_animal
+	FROM animal AS an
+		INNER JOIN galpao AS g ON g.id_galpao = an.id_galpao
+WHERE g.localizacao IS NULL;
