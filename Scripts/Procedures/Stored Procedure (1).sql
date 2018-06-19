@@ -1,4 +1,4 @@
- --PRIMEIRA PROCEDURE
+/*Procedure para atualização do estoque de remédio*/
 
 DELIMITER $$
 CREATE PROCEDURE atualiza_estoque_remedio (IN id_remedio INT)
