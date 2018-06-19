@@ -1,7 +1,7 @@
 
 /* Função Escalar = > Solução: Exibe dia de maior venda do ano escolhido*/
 DELIMITER $$
-CREATE FUNCTION fcMaiorVenda (ano int)
+CREATE FUNCTION FC_MAIOR_VENDA (ano int)
 	RETURNS date
 	BEGIN 
 			DECLARE dia date;
