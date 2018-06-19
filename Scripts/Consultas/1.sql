@@ -1,0 +1,12 @@
+/* Consulta número 1: Listar animais que possuem " endereço " incompleto */
+
+SELECT * FROM ANIMAL A
+
+INNER JOIN GALPAO G ON G.ID_ANIMAL = A.ID_ANIMAL
+INNER JOIN CABANHA C ON C.ID_CABANHA = G.ID_CABANHA
+
+WHERE
+   C.ENDERECO IS NULL
+OR
+   G.LOCALIZACAO IS NULL
+
