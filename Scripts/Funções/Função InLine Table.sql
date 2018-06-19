@@ -1,6 +1,6 @@
 
 /*Função Inline table-valued => Solução: Mostrar quais bezerros nasceram após certo período*/
-DELIMITER //
+DELIMITER $$
 CREATE FUNCTION fcBezerrosApos (dataApos date)
 	RETURNS date
 	 
@@ -8,7 +8,7 @@ CREATE FUNCTION fcBezerrosApos (dataApos date)
         FROM sgg.reproducao 
         WHERE parto >= dataApos);
     
-// DELIMITER ; 
+DELIMITER ; 
 
 /* Chama a função, passa como parâmetro a data desejada*/
 CALL fcBezerrosApos ('2018/04/30');
