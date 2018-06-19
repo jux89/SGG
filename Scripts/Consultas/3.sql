@@ -1,6 +1,6 @@
 /* Consulta número 3: Listar os 10 produtos mais vendidos. */
 
-SELECT TOP 10 P.ID_PRODUTO, P.NOME, P.TIPO, 
-SUM(P.QUANTIDADE) as QUANTIDADE FROM PRODUTO P  
-GROUP BY P.ID_PRODUTO, P.NOME, P.TIPO
-ORDER BY QUANTIDADE DESC, P.NOME, P.TIPO
+SELECT TOP 10 P.id_produto, P.nome, P.tipo, SUM(P.quantidade) as quantidade 
+	FROM produto P  
+		GROUP BY P.id_produto, P.nome, P.tipo
+		ORDER BY quantidade DESC, P.nome, P.tipo;
