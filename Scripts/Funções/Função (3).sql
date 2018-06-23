@@ -9,3 +9,5 @@ CREATE FUNCTION FC_GET_ALIMENTO (id_fornecedor INT)
             FROM alimento al
 				INNER JOIN fornecedor fn on fn.id_fornecedor = al.id_fornecedor;
 		END $$
+
+CALL FC_GET_ALIMENTO (1);

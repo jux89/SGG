@@ -18,3 +18,6 @@ INSERT INTO raca (nome) VALUES ("Sims"),("Morgan"),("English"),("Herrera"),("Hen
 
 -- Inserção de dados na Tabela Animal
 insert into animal (peso,id_raca, id_galpao) select floor(200+(rand()*(1-200))) , floor(10+(rand()*(1-10))) , floor(200+(rand()*(1-200)))from pessoa
+
+--Inserção de dados na Tabela Fornecedor
+insert into fornecedor (id_pessoa) select floor(200+(rand()*(1-200))) from pessoa 
